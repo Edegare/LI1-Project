@@ -1,0 +1,16 @@
+module Tarefa4_2022li1g034_Spec where
+
+import LI12223
+import Tarefa4_2022li1g034
+import Test.HUnit
+
+testsT4 :: Test
+testsT4 = TestLabel "Testes Tarefa 4" $ test ["Teste 1 (jogador fora de limite superior de mapa)" ~: True ~=? jogoTerminou (Jogo (Jogador (0,2)) (Mapa 5 [(Rio 1, [Tronco,Nenhum,Nenhum,Tronco, Nenhum]),(Relva, [Nenhum, Arvore, Arvore, Arvore, Nenhum])])),
+                                              "Teste 2 (jogador fora de limite lateral do mapa)" ~: True ~=? jogoTerminou (Jogo (Jogador (5,2)) (Mapa 5 [(Rio 1, [Tronco,Nenhum,Nenhum,Tronco, Nenhum]),(Estrada (-1), [Carro,Nenhum,Carro,Nenhum,Carro]),(Relva, [Nenhum, Arvore, Arvore, Arvore, Nenhum])])),
+                                              "Teste 3 (jogador fora de limite inferior do mapa)" ~: True ~=? jogoTerminou (Jogo (Jogador (2,(-1))) (Mapa 5 [(Rio 1, [Tronco,Nenhum,Nenhum,Tronco, Nenhum]),(Estrada (-1), [Carro,Nenhum,Carro,Nenhum,Carro])])),
+                                              "Teste 4 (jogador na mesma posição de uma árvore)" ~: True ~=? jogoTerminou (Jogo (Jogador (1,2)) (Mapa 5 [(Rio 1, [Tronco,Nenhum,Nenhum,Tronco, Nenhum]),(Estrada (-1), [Carro,Nenhum,Carro,Nenhum,Carro]),(Relva, [Nenhum, Arvore, Arvore, Arvore, Nenhum]),(Rio (-1),[Tronco,Nenhum,Tronco,Tronco,Tronco])])),
+                                              "Teste 5 (jogador atropelado ou na mesma posição de carro)" ~: True ~=? jogoTerminou (Jogo (Jogador (0,1)) (Mapa 5 [(Rio 1, [Tronco,Nenhum,Nenhum,Tronco, Nenhum]),(Estrada (-1), [Carro,Nenhum,Carro,Nenhum,Carro]),(Relva, [Nenhum, Arvore, Arvore, Arvore, Nenhum]),(Rio (-1),[Tronco,Nenhum,Tronco,Tronco,Tronco])])),
+                                              "Teste 6 (jogador afogado no rio ou na mesma posição de Nenhum em Rio)" ~: True ~=? jogoTerminou (Jogo (Jogador (2,0)) (Mapa 5 [(Rio 1, [Tronco,Nenhum,Nenhum,Tronco, Nenhum]),(Estrada (-1), [Carro,Nenhum,Carro,Nenhum,Carro]),(Relva, [Nenhum, Arvore, Arvore, Arvore, Nenhum]),(Rio (-1),[Tronco,Nenhum,Tronco,Tronco,Tronco])])),
+                                              "Teste 7 (jogador no Rio em Tronco)" ~: False ~=? jogoTerminou (Jogo (Jogador (0,3)) (Mapa 5 [(Rio 1, [Tronco,Nenhum,Nenhum,Tronco, Nenhum]),(Estrada (-1), [Carro,Nenhum,Carro,Nenhum,Carro]),(Relva, [Nenhum, Arvore, Arvore, Arvore, Nenhum]),(Rio (-1),[Tronco,Nenhum,Tronco,Tronco,Tronco])])),
+                                              "Teste 8 (jogador na Relva em Nenhum)" ~: False ~=? jogoTerminou (Jogo (Jogador (0,2)) (Mapa 5 [(Rio 1, [Tronco,Nenhum,Nenhum,Tronco, Nenhum]),(Estrada (-1), [Carro,Nenhum,Carro,Nenhum,Carro]),(Relva, [Nenhum, Arvore, Arvore, Arvore, Nenhum]),(Rio (-1),[Tronco,Nenhum,Tronco,Tronco,Tronco])])),
+                                              "Teste 9 (jogador na Estrada em Nenhum)" ~: False ~=? jogoTerminou (Jogo (Jogador (3,1)) (Mapa 5 [(Rio 1, [Tronco,Nenhum,Nenhum,Tronco, Nenhum]),(Estrada (-1), [Carro,Nenhum,Carro,Nenhum,Carro]),(Relva, [Nenhum, Arvore, Arvore, Arvore, Nenhum]),(Rio (-1),[Tronco,Nenhum,Tronco,Tronco,Tronco])]))]
