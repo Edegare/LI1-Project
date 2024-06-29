@@ -20,7 +20,7 @@ $ cd 2022li1g034
 
 Pode abrir o interpretador do Haskell (GHCi) utilizando o cabal ou diretamente.
 
-1. Usando o cabal
+1. Usando o cabal (não funcional)
 
 ```bash
 $ cabal repl
@@ -29,7 +29,8 @@ $ cabal repl
 2. Usando o GHCi
 
 ```bash
-$ ghci -i="src" -i="tests" src/Main.hs
+$ ghci -i="src" -i="tests" src/Main.hs -package random -package gloss
+ghci> main
 ```
 
 ## Testes

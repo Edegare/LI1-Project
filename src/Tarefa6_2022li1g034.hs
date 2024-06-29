@@ -207,22 +207,22 @@ time _ w = w
 --Carregamento das imagens necessárias
 carregarImagens :: IO Images
 carregarImagens = do
-  background <- loadBMP "Background.bmp"
-  playMenu <- loadBMP "MenuInicialPlay.bmp"
-  continueMenu <- loadBMP "MenuInicialContinue.bmp"
-  quitMenu <- loadBMP "MenuInicialQuit.bmp"
-  pauseContinue <- loadBMP "PauseContinue.bmp"
-  pauseRestart <- loadBMP "PauseRestart.bmp"
-  pauseQuit <- loadBMP "PauseQuit.bmp"
-  lost <- loadBMP "Lost.bmp"
-  paiNatal <- loadBMP "PaiNatal.bmp"
-  treno <- loadBMP "treno.bmp"
-  gelo <- loadBMP "gelo.bmp"
-  arvore <- loadBMP "arvore.bmp"
-  trenoEspelhado <- loadBMP "trenoEspelhado.bmp"
-  estradaGelo <- loadBMP "EstradaGelo.bmp"
-  rioAgua <- loadBMP "RioAgua.bmp"
-  rioAguaEspelhado <- loadBMP "RioAguaEspelhado.bmp"
+  background <- loadBMP "src/Background.bmp"
+  playMenu <- loadBMP "src/MenuInicialPlay.bmp"
+  continueMenu <- loadBMP "src/MenuInicialContinue.bmp"
+  quitMenu <- loadBMP "src/MenuInicialQuit.bmp"
+  pauseContinue <- loadBMP "src/PauseContinue.bmp"
+  pauseRestart <- loadBMP "src/PauseRestart.bmp"
+  pauseQuit <- loadBMP "src/PauseQuit.bmp"
+  lost <- loadBMP "src/Lost.bmp"
+  paiNatal <- loadBMP "src/PaiNatal.bmp"
+  treno <- loadBMP "src/treno.bmp"
+  gelo <- loadBMP "src/gelo.bmp"
+  arvore <- loadBMP "src/arvore.bmp"
+  trenoEspelhado <- loadBMP "src/trenoEspelhado.bmp"
+  estradaGelo <- loadBMP "src/EstradaGelo.bmp"
+  rioAgua <- loadBMP "src/RioAgua.bmp"
+  rioAguaEspelhado <- loadBMP "src/RioAguaEspelhado.bmp"
   return Images {lost = lost,
                  background = scale 2.5 2.5 background,
                  playMenu = scale 1.5 2 playMenu,
@@ -241,8 +241,3 @@ carregarImagens = do
                  rioAguaEspelhado = rioAguaEspelhado
                  }
 
---Invoca o jogo no terminal
-main :: IO ()
-main = do
-  images <- carregarImagens
-  play window blue fr (initialState images) drawState event time
